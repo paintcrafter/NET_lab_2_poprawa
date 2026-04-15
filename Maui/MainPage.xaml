@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                <Button Grid.Column="0" Text="Load data" Clicked="OnLoadClicked" />
+                <Button Grid.Column="1" Text="Sort" Clicked="OnSortClicked" />
+                <Button Grid.Column="2" Text="Alcoholic" Clicked="OnFilterAlcoholicClicked" />
+            </Grid>
+
+            
+            <CollectionView x:Name="CocktailsCollectionView"
+                            HeightRequest="350"
+                            SelectionMode="Single">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="LightGray" Padding="10" Margin="4">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding Category.Name}" FontSize="12"/>
+                                <Label Text="{Binding DisplayText}" FontSize="12"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            
+            <Label Text="Add cocktail" FontAttributes="Bold"/>
+
+            <Entry x:Name="NameEntry" Placeholder="Cocktail name" />
+
+            <HorizontalStackLayout>
+                <Label Text="Alcoholic" VerticalOptions="Center"/>
+                <CheckBox x:Name="AlcoholicCheckBox"/>
+            </HorizontalStackLayout>
+
+            <Picker x:Name="CategoryPicker"
+                    Title="Choose category"
+                    ItemDisplayBinding="{Binding Name}" />
+
+            <Button Text="Add cocktail" Clicked="OnAddClicked" />
+            <Button Text="Remove selected" Clicked="OnDeleteClicked" />
+
+            
+            <Label Text="Add category" FontAttributes="Bold"/>
+
+            <Entry x:Name="NewCategoryEntry" Placeholder="Category name" />
+            <Button Text="Add category" Clicked="OnAddCategoryClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

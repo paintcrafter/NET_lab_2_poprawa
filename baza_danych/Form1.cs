@@ -153,8 +153,6 @@ namespace baza_danych
             MessageBox.Show("New category has been added.");
         }
 
-
-
-
+        
     }
 }
